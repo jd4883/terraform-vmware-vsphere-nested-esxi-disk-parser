@@ -45,9 +45,9 @@ locals {
     })],
     [for i in range(3, 2 + var.ssd_count + var.hdd_count) : merge(local.shared, {
       datastore_id = var.hdd_datastore
-      label        = "disk${i}"
+      label        = "disk${i+1}"
       size         = var.hdd_size
       path         = "${var.disk_path}/${var.subpath_prefix}${var.index}/${var.subpath_prefix}${var.index}_${i}.vmdk"
-      unit_number  = i
+      unit_number  = i+1
   })])
 }
